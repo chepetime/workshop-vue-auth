@@ -1,59 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from './views/Home.vue'
-import Login from '@/views/Login'
-import Register from '@/views/Register'
-import UserBoard from '@/views/UserBoard'
-import Admin from '@/views/Admin'
+import { routes } from './routes'
 
 Vue.use(Router)
 
+const scrollBehavior = (to, from, savedPosition) => {
+  if (savedPosition) return savedPosition;
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ x: 0, y: 0 })
+    }, 200)
+  })
+};
+
 let router = new Router({
-  routes: [{
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-
-    {
-      path: '/login',
-      name: 'login',
-      component: Login,
-      meta: { guest: true }
-    },
-
-    {
-      path: '/register',
-      name: 'register',
-      component: Register,
-      meta: { guest: true }
-    },
-
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: UserBoard,
-      meta: { requiresAuth: true }
-    },
-
-    {
-      path: '/admin',
-      name: 'admin',
-      component: Admin,
-      meta: { requiresAuth: true, is_admin: true }
-    },
-
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import ( /* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+  mode: 'history',
+  routes: routes,
+  scrollBehavior
 })
 
 router.beforeEach((to, from, next) => {
