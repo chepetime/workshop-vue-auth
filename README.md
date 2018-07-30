@@ -2,7 +2,7 @@
 
 In this workshop we build a simple VueApp with Authentication and Route Handling
 
-> Based on Egghead's [Vue Authentication And Route Handling Using Vue-router](https://scotch.io/tutorials/vue-authentication-and-route-handling-using-vue-router)
+> Based on Scotch.io's [Vue Authentication And Route Handling Using Vue-router](https://scotch.io/tutorials/vue-authentication-and-route-handling-using-vue-router)
 
 <br><br>
 
